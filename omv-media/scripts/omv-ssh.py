@@ -12,7 +12,22 @@ import pexpect
 
 HOST = os.environ.get("OMV_HOST", "192.168.2.121")
 USER = os.environ.get("OMV_USER", "root")
-PASSWORD = os.environ.get("OMV_SSH_PASSWORD", "")
+def _load_password() -> str:
+    pw = os.environ.get("OMV_SSH_PASSWORD", "").strip()
+    if pw:
+        return pw
+    pass_file = os.environ.get(
+        "OMV_SSH_PASS_FILE",
+        os.path.join(os.path.dirname(__file__), "..", ".ssh_pass"),
+    )
+    pass_file = os.path.abspath(pass_file)
+    if os.path.isfile(pass_file):
+        with open(pass_file) as f:
+            return f.read().strip()
+    return ""
+
+
+PASSWORD = _load_password()
 PUBKEY = os.path.expanduser("~/.ssh/id_ed25519.pub")
 KNOWN = os.path.expanduser("~/.ssh/known_hosts")
 TIMEOUT = int(os.environ.get("OMV_SSH_TIMEOUT", "180"))
@@ -20,7 +35,11 @@ TIMEOUT = int(os.environ.get("OMV_SSH_TIMEOUT", "180"))
 
 def run_ssh(command: str) -> tuple[int, str]:
     if not PASSWORD:
-        return 1, "Set OMV_SSH_PASSWORD first."
+        return 1, (
+            "No password. Either: export OMV_SSH_PASSWORD='...' OR create "
+            f"{os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '.ssh_pass'))} "
+            "(one line, chmod 600)."
+        )
     ssh = (
         f"ssh -o StrictHostKeyChecking=accept-new "
         f"-o UserKnownHostsFile={KNOWN} {USER}@{HOST}"

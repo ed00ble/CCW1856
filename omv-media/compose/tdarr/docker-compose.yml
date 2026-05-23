@@ -1,0 +1,42 @@
+services:
+  tdarr:
+    image: ghcr.io/haveagitgat/tdarr:latest
+    container_name: tdarr
+    restart: unless-stopped
+    network_mode: host
+    environment:
+      - TZ=America/New_York
+      - PUID=1000
+      - PGID=100
+      - serverIP=0.0.0.0
+      - serverPort=8266
+      - webUIPort=8265
+    volumes:
+      - ./server:/app/server
+      - ./configs:/app/configs
+      - ./logs:/app/logs
+      - /transcode-cache:/temp
+      # Mount same library path as Plex (*arr /data/media) — set on deploy:
+      - ${MEDIA_LIBRARY_PATH}:/library:rw
+    devices:
+      - /dev/dri:/dev/dri
+
+  tdarr_node:
+    image: ghcr.io/haveagitgat/tdarr_node:latest
+    container_name: tdarr_node
+    restart: unless-stopped
+    network_mode: host
+    environment:
+      - TZ=America/New_York
+      - PUID=1000
+      - PGID=100
+      - nodeID=omvt300-node1
+      - serverIP=127.0.0.1
+      - serverPort=8266
+    volumes:
+      - ./configs:/app/configs
+      - ./logs:/app/logs
+      - /transcode-cache:/temp
+      - ${MEDIA_LIBRARY_PATH}:/library:rw
+    devices:
+      - /dev/dri:/dev/dri

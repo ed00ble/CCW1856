@@ -1,0 +1,79 @@
+=== hostname ===
+omvt300.local
+Linux omvt300 6.1.0-0.deb11.21-amd64 #1 SMP PREEMPT_DYNAMIC Debian 6.1.90-1~bpo11+1 (2024-05-06) x86_64 GNU/Linux
+=== df ===
+Filesystem           Type      Size  Used Avail Use% Mounted on
+udev                 devtmpfs   12G     0   12G   0% /dev
+tmpfs                tmpfs     2.4G  3.4M  2.4G   1% /run
+/dev/sda1            ext4      182G  123G   50G  72% /
+tmpfs                tmpfs      12G   84K   12G   1% /dev/shm
+tmpfs                tmpfs     5.0M     0  5.0M   0% /run/lock
+tmpfs                tmpfs      12G   40K   12G   1% /tmp
+folder2ram           tmpfs      12G  1.5G   11G  13% /var/log
+/dev/md0             ext4       17T   15T  2.1T  88% /srv/dev-disk-by-uuid-a85e8270-9716-45a0-90e5-d8bd29a801e5
+folder2ram           tmpfs      12G     0   12G   0% /var/tmp
+folder2ram           tmpfs      12G  1.4M   12G   1% /var/lib/openmediavault/rrd
+folder2ram           tmpfs      12G   24K   12G   1% /var/spool
+folder2ram           tmpfs      12G   20M   12G   1% /var/lib/rrdcached
+folder2ram           tmpfs      12G  4.0K   12G   1% /var/lib/monit
+folder2ram           tmpfs      12G   28K   12G   1% /var/cache/samba
+//syn_ds.local/music cifs      5.4T  3.2T  2.2T  60% /srv/remotemount/music
+shm                  tmpfs      63M     0   63M   0% /var/lib/containers/storage/overlay-containers/552457af7e75bf23be5f7eb0ebbab10a24432feb83463ce2ff58a9c1b0bcd8e7/userdata/shm
+overlay              overlay   182G  123G   50G  72% /var/lib/containers/storage/overlay/4584edec248a4813cf0aab7e6cdbbb92c4d61b4b0402a08b7a9bcacae8428907/merged
+shm                  tmpfs      63M     0   63M   0% /var/lib/containers/storage/overlay-containers/c039da7b348afafa86cda674e6b328aa396eeee9361bbb7e8e9b3360e097c24c/userdata/shm
+overlay              overlay   182G  123G   50G  72% /var/lib/containers/storage/overlay/c5607229168dbd2ab6f0971c353e60a560533703b27bf0651ec0ad13f790c32a/merged
+overlay              overlay   182G  123G   50G  72% /var/lib/containers/storage/overlay/5b2751c69abf3de91982de95071c5408e35b21a7e6dcd7be64eea3ff45d46c58/merged
+overlay              overlay   182G  123G   50G  72% /var/lib/docker/overlay2/dd37dee55330e8c0d37091be88a32a736c342df108c4594de5b6c92ab5c1ddf1/merged
+overlay              overlay   182G  123G   50G  72% /var/lib/docker/overlay2/487ab97a3de60ecdc459faa633ee81fb8fbc208b67d659344bcb827892352dcc/merged
+overlay              overlay   182G  123G   50G  72% /var/lib/docker/overlay2/883497f7773376a5fdacd6a83492b0a484a3b9b73b34395ca5765e158497ed24/merged
+overlay              overlay   182G  123G   50G  72% /var/lib/docker/overlay2/57e06d3fa18275fcceba000209752f2117b601bfdbb518bb501620e9aee7a3e6/merged
+overlay              overlay   182G  123G   50G  72% /var/lib/docker/overlay2/73a20f2bf710234cc78860b5d8f7b1fe14c28f1f3c13882654fed8664066c8fc/merged
+overlay              overlay   182G  123G   50G  72% /var/lib/docker/overlay2/9b20b31cd73b9427b9eabc68507271a4720004e0445d881edcd097c6633a1227/merged
+overlay              overlay   182G  123G   50G  72% /var/lib/docker/overlay2/ad62e345ae66542b94ab70886b88a6afaa5a94cdb0c5fd9e116d55791f6d3183/merged
+overlay              overlay   182G  123G   50G  72% /var/lib/docker/overlay2/a2b742751ded86c2abdf2f7aa9c0b784ba5830647bb58a3070c28010cd090afd/merged
+overlay              overlay   182G  123G   50G  72% /var/lib/docker/overlay2/361a44a3f766d88adddaad3b0bcb01fccaf29ab9afeb7dd054b5ac6b4e0497f8/merged
+=== lsblk ===
+NAME   FSTYPE            FSVER LABEL     UUID                                 FSAVAIL FSUSE% MOUNTPOINT
+sda                                                                                          
+├─sda1 ext4              1.0             441773a6-939c-4157-b67d-43ecb3283eb3   49.6G    68% /
+├─sda2                                                                                       
+└─sda5 swap              1               f1595a07-4fdd-4db6-93b8-15ad2b5f1406                [SWAP]
+sdb    linux_raid_member 1.2   omvt300:0 f91306c8-c62c-14ec-2a2a-c1ebe1091c9e                
+└─md0  ext4              1.0             a85e8270-9716-45a0-90e5-d8bd29a801e5      2T    87% /srv/dev-disk-by-uuid-a85e8270-9716-45a0-90e5-d8bd29a801e5
+sdc    linux_raid_member 1.2   omvt300:0 f91306c8-c62c-14ec-2a2a-c1ebe1091c9e                
+└─md0  ext4              1.0             a85e8270-9716-45a0-90e5-d8bd29a801e5      2T    87% /srv/dev-disk-by-uuid-a85e8270-9716-45a0-90e5-d8bd29a801e5
+sdd    linux_raid_member 1.2   omvt300:0 f91306c8-c62c-14ec-2a2a-c1ebe1091c9e                
+└─md0  ext4              1.0             a85e8270-9716-45a0-90e5-d8bd29a801e5      2T    87% /srv/dev-disk-by-uuid-a85e8270-9716-45a0-90e5-d8bd29a801e5
+sde    linux_raid_member 1.2   omvt300:0 f91306c8-c62c-14ec-2a2a-c1ebe1091c9e                
+└─md0  ext4              1.0             a85e8270-9716-45a0-90e5-d8bd29a801e5      2T    87% /srv/dev-disk-by-uuid-a85e8270-9716-45a0-90e5-d8bd29a801e5
+sr0                                                                                          
+=== fstab ===
+# /etc/fstab: static file system information.
+#
+# Use 'blkid' to print the universally unique identifier for a
+# device; this may be used with UUID= as a more robust way to name devices
+# that works even if disks are added and removed. See fstab(5).
+#
+# systemd generates mount units based on this file, see systemd.mount(5).
+# Please run 'systemctl daemon-reload' after making changes here.
+#
+# <file system> <mount point>   <type>  <options>       <dump>  <pass>
+# / was on /dev/sda1 during installation
+UUID=441773a6-939c-4157-b67d-43ecb3283eb3 /               ext4    errors=remount-ro 0       1
+# swap was on /dev/sda5 during installation
+UUID=f1595a07-4fdd-4db6-93b8-15ad2b5f1406 none            swap    sw              0       0
+/dev/sr0        /media/cdrom0   udf,iso9660 user,noauto     0       0
+# >>> [openmediavault]
+/dev/disk/by-uuid/a85e8270-9716-45a0-90e5-d8bd29a801e5		/srv/dev-disk-by-uuid-a85e8270-9716-45a0-90e5-d8bd29a801e5	ext4	defaults,nofail,user_xattr,usrjquota=aquota.user,grpjquota=aquota.group,jqfmt=vfsv0,acl	0 2
+# <<< [openmediavault]
+=== docker ps ===
+plex	lscr.io/linuxserver/plex:latest	Up 2 hours
+prowlarr	lscr.io/linuxserver/prowlarr:develop	Up 2 hours
+radarr	e6541f9e8dc3	Up 2 hours
+qbittorrentvpn	markusmcnugen/qbittorrentvpn	Up 2 hours
+sonarr	b315103da294	Up 2 hours
+calibre-web	lscr.io/linuxserver/calibre-web	Up 2 hours
+calibre	lscr.io/linuxserver/calibre:latest	Up 2 hours
+readarr	lscr.io/linuxserver/readarr:develop	Up 2 hours
+booksonic-air	lscr.io/linuxserver/booksonic-air:latest	Up 2 hours
+=== compose files ===

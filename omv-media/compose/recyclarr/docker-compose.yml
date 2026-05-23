@@ -1,0 +1,10 @@
+services:
+  recyclarr:
+    image: ghcr.io/recyclarr/recyclarr:latest
+    container_name: recyclarr
+    environment:
+      - TZ=America/New_York
+    volumes:
+      - ./config:/config
+    command: --schedule @daily
+    restart: unless-stopped

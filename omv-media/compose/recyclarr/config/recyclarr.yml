@@ -1,0 +1,10 @@
+# Copy to server; replace API keys. See https://recyclarr.dev
+sonarr:
+  main:
+    base_url: http://192.168.2.121:8989
+    api_key: SONARR_API_KEY_PLACEHOLDER
+
+radarr:
+  main:
+    base_url: http://192.168.2.121:7878
+    api_key: RADARR_API_KEY_PLACEHOLDER
