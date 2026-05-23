@@ -77,3 +77,78 @@ calibre	lscr.io/linuxserver/calibre:latest	Up 2 hours
 readarr	lscr.io/linuxserver/readarr:develop	Up 2 hours
 booksonic-air	lscr.io/linuxserver/booksonic-air:latest	Up 2 hours
 === compose files ===
+/srv/dev-disk-by-uuid-a85e8270-9716-45a0-90e5-d8bd29a801e5/config/nextcloud/www/nextcloud/apps/suspicious_login/vendor/league/flysystem/docker-compose.yml
+=== inspect plex ===
+/srv/remotemount/music -> /albums
+/srv/dev-disk-by-uuid-a85e8270-9716-45a0-90e5-d8bd29a801e5/config/plex -> /config
+/srv/dev-disk-by-uuid-a85e8270-9716-45a0-90e5-d8bd29a801e5/Media -> /media
+/srv/dev-disk-by-uuid-a85e8270-9716-45a0-90e5-d8bd29a801e5/Media/Movies -> /movies
+/srv/dev-disk-by-uuid-a85e8270-9716-45a0-90e5-d8bd29a801e5/Media/Music -> /music
+/srv/dev-disk-by-uuid-a85e8270-9716-45a0-90e5-d8bd29a801e5/Media/TV -> /tv
+
+=== inspect radarr ===
+/srv/dev-disk-by-uuid-a85e8270-9716-45a0-90e5-d8bd29a801e5/config/radarr -> /config
+/srv/dev-disk-by-uuid-a85e8270-9716-45a0-90e5-d8bd29a801e5/Media/Downloads/Torrents -> /downloads
+/srv/dev-disk-by-uuid-a85e8270-9716-45a0-90e5-d8bd29a801e5/Media -> /media
+/srv/dev-disk-by-uuid-a85e8270-9716-45a0-90e5-d8bd29a801e5/Media/Movies -> /movies
+
+=== inspect qbittorrentvpn ===
+/srv/dev-disk-by-uuid-a85e8270-9716-45a0-90e5-d8bd29a801e5/config/QBittorrentVPN -> /config
+/srv/dev-disk-by-uuid-a85e8270-9716-45a0-90e5-d8bd29a801e5/Media/Downloads/Torrents -> /downloads
+/srv/remotemount/batocera/Downloads -> /downloads2
+
+=== inspect sonarr ===
+/srv/dev-disk-by-uuid-a85e8270-9716-45a0-90e5-d8bd29a801e5/Media/TV -> /tv
+/srv/dev-disk-by-uuid-a85e8270-9716-45a0-90e5-d8bd29a801e5/config/sonarr -> /config
+/srv/dev-disk-by-uuid-a85e8270-9716-45a0-90e5-d8bd29a801e5/Media/Downloads/Torrents -> /downloads
+
+=== GPU ===
+0b:07.0 VGA compatible controller: Advanced Micro Devices, Inc. [AMD/ATI] ES1000 (rev 02)
+total 0
+drwxr-xr-x  3 root root        100 May 19 23:09 .
+drwxr-xr-x 17 root root       3460 May 19 23:09 ..
+drwxr-xr-x  2 root root         80 May 19 23:09 by-path
+crw-rw----  1 root video  226,   0 May 19 23:09 card0
+crw-rw----  1 root render 226, 128 May 19 23:09 renderD128
+=== du media (depth 2) ===
+4.0K	/srv/dev-disk-by-uuid-2e9dd7ec-a484-4bbf-b9c6-c1df64258e68
+113M	/srv/dev-disk-by-uuid-a85e8270-9716-45a0-90e5-d8bd29a801e5/appdata/nextclouddb
+2.9M	/srv/dev-disk-by-uuid-a85e8270-9716-45a0-90e5-d8bd29a801e5/appdata/nextcloud
+116M	/srv/dev-disk-by-uuid-a85e8270-9716-45a0-90e5-d8bd29a801e5/appdata
+47G	/srv/dev-disk-by-uuid-a85e8270-9716-45a0-90e5-d8bd29a801e5/Calibre/Calibre_Library
+564K	/srv/dev-disk-by-uuid-a85e8270-9716-45a0-90e5-d8bd29a801e5/Calibre/.config
+4.0K	/srv/dev-disk-by-uuid-a85e8270-9716-45a0-90e5-d8bd29a801e5/Calibre/.gnupg
+4.0K	/srv/dev-disk-by-uuid-a85e8270-9716-45a0-90e5-d8bd29a801e5/Calibre/thinclient_drives
+4.0K	/srv/dev-disk-by-uuid-a85e8270-9716-45a0-90e5-d8bd29a801e5/Calibre/Calibre\ Library
+965M	/srv/dev-disk-by-uuid-a85e8270-9716-45a0-90e5-d8bd29a801e5/Calibre/.cache
+4.0K	/srv/dev-disk-by-uuid-a85e8270-9716-45a0-90e5-d8bd29a801e5/Calibre/Calibre Library
+125M	/srv/dev-disk-by-uuid-a85e8270-9716-45a0-90e5-d8bd29a801e5/Calibre/.local
+8.6M	/srv/dev-disk-by-uuid-a85e8270-9716-45a0-90e5-d8bd29a801e5/Calibre/Uploads
+4.0K	/srv/dev-disk-by-uuid-a85e8270-9716-45a0-90e5-d8bd29a801e5/Calibre/.dbus
+4.0K	/srv/dev-disk-by-uuid-a85e8270-9716-45a0-90e5-d8bd29a801e5/Calibre/Plugins
+48G	/srv/dev-disk-by-uuid-a85e8270-9716-45a0-90e5-d8bd29a801e5/Calibre
+16K	/srv/dev-disk-by-uuid-a85e8270-9716-45a0-90e5-d8bd29a801e5/lost+found
+89G	/srv/dev-disk-by-uuid-a85e8270-9716-45a0-90e5-d8bd29a801e5/Media/Fitness
+2.3G	/srv/dev-disk-by-uuid-a85e8270-9716-45a0-90e5-d8bd29a801e5/Media/Music\ Videos\ and\ Concerts
+68K	/srv/dev-disk-by-uuid-a85e8270-9716-45a0-90e5-d8bd29a801e5/Media/.config
+466M	/srv/dev-disk-by-uuid-a85e8270-9716-45a0-90e5-d8bd29a801e5/Media/Documentaries
+87G	/srv/dev-disk-by-uuid-a85e8270-9716-45a0-90e5-d8bd29a801e5/Media/AudioBooks
+59G	/srv/dev-disk-by-uuid-a85e8270-9716-45a0-90e5-d8bd29a801e5/Media/Standup Comedy
+4.0K	/srv/dev-disk-by-uuid-a85e8270-9716-45a0-90e5-d8bd29a801e5/Media/.recycle
+75M	/srv/dev-disk-by-uuid-a85e8270-9716-45a0-90e5-d8bd29a801e5/Media/Ringtones
+8.0K	/srv/dev-disk-by-uuid-a85e8270-9716-45a0-90e5-d8bd29a801e5/Media/camera
+4.7G	/srv/dev-disk-by-uuid-a85e8270-9716-45a0-90e5-d8bd29a801e5/Media/Video Clips
+33G	/srv/dev-disk-by-uuid-a85e8270-9716-45a0-90e5-d8bd29a801e5/Media/Music Videos and Concerts
+21M	/srv/dev-disk-by-uuid-a85e8270-9716-45a0-90e5-d8bd29a801e5/Media/Manuals
+58G	/srv/dev-disk-by-uuid-a85e8270-9716-45a0-90e5-d8bd29a801e5/Media/Books
+3.8G	/srv/dev-disk-by-uuid-a85e8270-9716-45a0-90e5-d8bd29a801e5/Media/Instructional
+197M	/srv/dev-disk-by-uuid-a85e8270-9716-45a0-90e5-d8bd29a801e5/Media/hbconverts
+9.5G	/srv/dev-disk-by-uuid-a85e8270-9716-45a0-90e5-d8bd29a801e5/Media/Music
+3.2G	/srv/dev-disk-by-uuid-a85e8270-9716-45a0-90e5-d8bd29a801e5/Media/PlayLater
+915G	/srv/dev-disk-by-uuid-a85e8270-9716-45a0-90e5-d8bd29a801e5/Media/Downloads
+32G	/srv/dev-disk-by-uuid-a85e8270-9716-45a0-90e5-d8bd29a801e5/Media/videoarchive
+57G	/srv/dev-disk-by-uuid-a85e8270-9716-45a0-90e5-d8bd29a801e5/Media/Jdownloads
+113M	/srv/dev-disk-by-uuid-a85e8270-9716-45a0-90e5-d8bd29a801e5/Media/Podcasts
+2.6M	/srv/dev-disk-by-uuid-a85e8270-9716-45a0-90e5-d8bd29a801e5/Media/LegendasTV.bundle
+28M	/srv/dev-disk-by-uuid-a85e8270-9716-45a0-90e5-d8bd29a801e5/Media/Sub-Zero.bundle
+48G	/srv/dev-disk-by-uuid-a85e8270-9716-45a0-90e5-d8bd29a801e5/Media/Kids
