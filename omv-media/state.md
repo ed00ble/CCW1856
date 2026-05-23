@@ -1,71 +1,43 @@
 # OMV Media Stack — Current State
 
-**Host:** `omvt300` @ `192.168.2.121` (TerraMaster / Debian 11, kernel 6.1)  
-**Inspected:** 2026-05-21 (SMB guest + Sonarr/Radarr API; SSH pending `.ssh_pass`)  
-**Pool (SMB):** ~16.3 TB total, ~2.04 TB free (`17510163244` × 1K blocks)
+**Host:** `omvt300` @ `192.168.2.121`  
+**Pool:** `/srv/dev-disk-by-uuid-a85e8270-9716-45a0-90e5-d8bd29a801e5` (~17 TB, **~3.0 TB free**, ~82% used)  
+**Updated:** 2026-05-23
 
-## Services (reachable on LAN)
+## Services
 
-| Service   | Port  | Version / notes        |
-|-----------|-------|------------------------|
-| OMV       | 80    | Workbench              |
-| Plex      | 32400 | Running                |
-| Sonarr    | 8989  | 4.0.15.2941 (Docker)   |
-| Radarr    | 7878  | 6.0.4.10291 (Docker)   |
-| qBittorrent | 8080 | VPN container `QBittorrentVPN` |
-| Prowlarr  | (config present) | |
+| Service | Port | Notes |
+|---------|------|-------|
+| Plex | 32400 | tmpfs transcode |
+| Sonarr | 8989 | hardlinks on |
+| Radarr | 7878 | hardlinks on |
+| qBittorrent | 8080 | `qbittorrentvpn` |
+| Tdarr | 8265 | server + node |
+| Recyclarr | — | cron daily sync |
 
-**API keys (from SMB `config` share):** stored in `smb-cache/*/config.xml` — use for automation, do not commit.
+**Compose:** `/compose/{sonarr,radarr,qbittorrentvpn,plex,tdarr,recyclarr}/`
 
-## SMB layout (guest read/write on `config`)
+## Storage
 
-| Share   | Role |
-|---------|------|
-| `//192.168.2.121/Media` | Library: `Movies/`, `TV/`, `Downloads/Torrents/` |
-| `//192.168.2.121/config` | App configs: `sonarr/`, `radarr/`, `plex/`, `QBittorrentVPN/`, `prowlarr/` |
+| Path | Container |
+|------|-----------|
+| `.../Media/Movies` | `/movies` |
+| `.../Media/TV` | `/tv` |
+| `.../Media/Downloads/Torrents` | `/downloads` |
+| `.../Media` (Tdarr) | `/library` |
 
-## Container paths (*arr API — not TRaSH unified `/data` yet)
+## Phase status
 
-**Sonarr root folders:** `/tv`, `/tv/Series`, `/tv/Kids TV`, `/tv/TV_Archive`, `/tv/Documentaries`  
-**Radarr root folders:** `/movies`, `/movies/General`, archives, genre folders, `/media/...`  
-**qBittorrent:** `Downloads\SavePath=/downloads/`  
-**Categories (qBit):** `tv-sonarr`, `radarr`, `readarr`, `readarr-audiobooks`, `games` → `/downloads2/`  
-**Sonarr → qBit category:** `tv-sonarr`  
-**Radarr → qBit category:** `radarr`  
-**Remote path mappings:** none  
-**Completed download removal:** enabled on both *arr clients  
+| Phase | Status |
+|-------|--------|
+| 0 Inspect | Done |
+| 1 Quick wins | Done — [phase1-results.md](reports/phase1-results.md) |
+| 2 Pipeline | Done — Recyclarr synced, hardlinks verified |
+| 3 Tdarr | Deployed — **finish libraries/flows in UI** — [tdarr/README.md](tdarr/README.md) |
+| 4 Hygiene | Done — cron + backups — [phase2-4-results.md](reports/phase2-4-results.md) |
 
-## Pipeline gaps (space impact)
+## Your action items
 
-1. **No unified mount** — downloads (`/downloads/`) vs library (`/tv`, `/movies`) likely different bind mounts → **copy import, not hardlinks** → doubles disk use while seeding.
-2. **Many unmapped folders** — large `unmappedFolders` lists on root folders; Sonarr DB shows very few tracked episode files vs disk content.
-3. **Downloads folder clutter** — `Media/Downloads/Torrents/` contains games, ebooks, `.scr` partials, non-media (reclaim candidates).
-4. **qBit seed limits** — `GlobalMaxSeedingMinutes=30`, `MaxRatio=0.05` (good); categories not aligned to TRaSH `sonarr`/`radarr` names.
-
-## SMB ↔ container mapping (inferred)
-
-| SMB (Media share)        | Likely container path |
-|--------------------------|------------------------|
-| `Movies/`                | `/movies`              |
-| `TV/`                    | `/tv`                  |
-| `Downloads/Torrents/`    | `/downloads/`          |
-
-**Confirm via SSH:** `docker inspect` bind mounts for plex, sonarr, radarr, qbittorrent.
-
-## Hardware / transcode (pending SSH)
-
-Run on server: `lspci | grep -i vga; ls /dev/dri 2>/dev/null` for QSV/VAAPI Tdarr decision.
-
-## Compose file locations (pending SSH)
-
-Typical OMV-extras: `/srv/dev-disk-by-uuid-*/compose/<stack>/docker-compose.yml`  
-Find with: `find /srv -name docker-compose.yml 2>/dev/null | head -20`
-
-## Next step
-
-Create `/home/eric/Documents/omv-media/.ssh_pass` (one line, root password, `chmod 600`), reply **ready**, then run:
-
-```bash
-python3 /home/eric/Documents/omv-media/scripts/omv-ssh.py --install-key
-bash /home/eric/Documents/omv-media/scripts/remote/phase0-inspect.sh  # via omv-ssh wrapper
-```
+1. **Tdarr:** http://192.168.2.121:8265 — add libraries, health check, then encode waves per README.
+2. **OMV:** Enable filesystem notification at 85% used.
+3. **Test hardlink:** After next download, `stat -c '%i' <file-in-downloads> <file-in-library>` — same inode = success.

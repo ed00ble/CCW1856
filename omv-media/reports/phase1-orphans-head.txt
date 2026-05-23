@@ -1,0 +1,7 @@
+Tracked: 1568  On-disk: 15445  Orphans: 13910
+
+11548434571	/srv/dev-disk-by-uuid-a85e8270-9716-45a0-90e5-d8bd29a801e5/Media/TV/Series/The Stand/Season 1/The.Stand.S01E04.The.Stand.1080p.BluRay.REMUX.AVC.DD.2.0-NOGRP.mkv
+10951530522	/srv/dev-disk-by-uuid-a85e8270-9716-45a0-90e5-d8bd29a801e5/Media/TV/Series/The Stand/Season 1/The.Stand.S01E03.The.Betrayal.1080p.BluRay.REMUX.AVC.DD.2.0-NOGRP.mkv
+10929750472	/srv/dev-disk-by-uuid-a85e8270-9716-45a0-90e5-d8bd29a801e5/Media/TV/Series/The Stand/Season 1/The.Stand.S01E02.The.Dreams.1080p.BluRay.REMUX.AVC.DD.2.0-NOGRP.mkv
+...
+13912 /tmp/phase1-orphans.txt
